@@ -71,3 +71,18 @@ O(n)
 O(n)
 1.6 - Você quer ler os números apenas dos nomes que começam com A.
 ?
+
+#### O caixeiro-viajante
+- Tem complexidade O(n!)
+- O caixeiro precisa percorrer todas as cidades de uma determinada lista de cidades, para chegar ao percurso mais simples, o caixeiro precisa percorrer num_cidades! vezes.
+- Ou seja tempo de execução do caixeiro viajante é O(n!)
+- É um problema até o momento sem solução.
+
+### Recaptulando...
+- A pesquisa binária é muito mais rápida que a pesquisa simples
+- O(log n) é mais rápido que O(n), e O(log n) fica mais rápido conforme os elementos da lista aumentam.
+- A rapidez de um algoritmo não é medida em segundos.
+- O tempo de execução de um algoritmo é medido por meio de seu crescimento.
+- O tempo de execução de algoritmos é expresso na notação Big O.
+
+## Ordenação por seleção

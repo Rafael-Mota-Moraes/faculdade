@@ -1,4 +1,4 @@
-lenVector = 1000000
+lenVector = 10
 
 def preencher_vetor_aleatorio(vetor, tamanho, limite)
   tamanho.times do
@@ -8,7 +8,7 @@ end
 
 v = []
 preencher_vetor_aleatorio(v, lenVector, lenVector)
-
+# puts v
 def quick_sort(array, first, last)
   if first < last
     pivot_index = partition(array, first, last)
@@ -32,4 +32,4 @@ def partition(array, first, last)
 end
 
 quick_sort(v, 0, v.length - 1)
-# puts v
+puts v
