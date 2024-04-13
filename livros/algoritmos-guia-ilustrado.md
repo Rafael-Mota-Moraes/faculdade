@@ -22,9 +22,52 @@
 - De maneira geral, para uma lista de n números, a pesquisa binária precisa de
 log2n para retornar o valor correto, enquanto a pesquisa simples precisa de n
 etapas.
+#### Exercícios
+1.1 - Suponha que você tenha uma lista com 128 nomes, e esteja fazendo uma pesquisa binária. Qual seria o número máximo de etapas que você levaria para encontrar o nome desejado?
+  - 128 -> 64 -> 32 -> 16 -> 8 -> 4 -> 2 -> 1
+  - 1      2     3     4     5    6    7    8 etapas
+1.2 - Suponha que você duplique o tamanho da lista. Qual seria o número máximo de etapas agora?
+  - 9 etapas
 ### Logaritmos
 - log10 100 quer dizer: "Quantos 100 podemos multiplicar para chegar em 100?"
 - Ou seja 2, pois 10 * 10 = 100
 - Então log10 100 = 2
 - Logaritmos são o oposto de exponenciais.
 - Nesse caso levamos em conta que log sempre significa log2
+
+
+### Tempo de execução
+- Busca simples tem tempo linear, pois o tempo cresce de forma linear de acordo com o crescimento do tamanho da lista.
+- Na busca binária, se a lista tem 100 itens, precisa-se de, no máximo, sete tentativas. Se tem 4 bilhões, precisa-se de no máximo 32 tentativas. A busca binária é executada em tempo logaritmico.
+
+### Notação BigO
+- A notação BigO é uma notação que diz o quão rápido é um algoritmo.
+- Tempos de execução crescem com velocidades diferentes
+- A notação BigO não forneçe o tempo em segundos, ela permite que você compare o número de operações, ela informa o quão rapidamente um algoritmo cresce.
+- A pesquisa binária precisa de log n operações e a pesquisa simples precisa de n operações.
+- A notação bigO forneçe o tempo de execução para a pior das hipóteses.
+
+#### Alguns exemplos comuns de tempos de execução Big O
+- O(log n), também conhecido como tempo logarítmico. Exemplo: Pesquisa binária.
+- O(n), também conhecido como tempo linear. Exemplo: Pesquisa simples.
+- O(n * log n), Exemplo: um algoritmo rápido de ordenação, como a ordenação quicksort.
+- O(n²), Exemplo: Um algoritmo de ordenação, como a ordenação por seleção.
+- O(n!), Exemplo: Um algoritmo bastante lento, como o caixeiro viajante.
+**Existem outros tempos de execução, mas esses são os 5 mais comuns**
+
+#### Principais pontos até agora
+- A rapidez de um algoritmo não é medida em segundos, mas pelo crescimento do número de operações.
+- Em vez disso, discutimos sobre o quão rapidamente o tempo de execução de um algoritmo aumenta conforme o número de elementos aumenta.
+- O tempo de execução de algoritmos é expresso na notação Big O.
+- O(Log n) é mais rápido que O(n), e O(log n) fica ainda mais rápido conforme a lista aumenta.
+
+#### Exercícios
+- Forneça o tempo de execução para cada um dos casos a seguir em termos da notação Big O.
+1.3 - Você tem um nome e deseja encontrar o número de telefone para esse nome em uma agenda telefônica.
+O(log n)
+1.4 - Você tem um número de telefone e deseja encontrar ele em uma agenda telefônica. (Dica: Deve procurar pela agenda inteira).
+O(n)
+1.5 - Você quer ler o número de cada pessoa na agenda telefonica.
+O(n)
+1.6 - Você quer ler os números apenas dos nomes que começam com A.
+?
