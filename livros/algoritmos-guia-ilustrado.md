@@ -85,4 +85,45 @@ O(n)
 - O tempo de execução de um algoritmo é medido por meio de seu crescimento.
 - O tempo de execução de algoritmos é expresso na notação Big O.
 
-## Ordenação por seleção
+## Ordenação por seleção - Arrays e listas encadeadas
+- Arrays e listas encadeadas são 2 tipos de estruturas básicas.
+- Arrays são fundamentais, porém as vezes é melhor usar listas encadeadas.
+
+### Como funciona a memória
+- O computador se parece com um grande conjunto de gavetas, cada gaveta tem seu endereço, e cada gaveta guarda um item.
+- Se quiser armazenar multiplos items, existem 2 formas, arrays e listas
+
+### Arrays e listas encadeadas
+- Usar um array significa dizer que toda suas tarefas estão armazenadas contiguamente (uma ao lado da outra) na memória.
+- Caso falte memória em um determinado lugar é necessario mover todos os itens para algum lugar que eles caibam contiguamente.
+- Por via das dúvidas você pode solicitar mais espaços que o necessário, porém isso gera várias desvantagens.
+- Pode ser que sobre espaços, mas ele está reservado para você, então ninguém mais poderá usar a memória.
+
+#### Listas encadeadas
+- Com uma lista encadeada os itens podem estar em qualquer lugar da memória.
+- Cada item além do valor, armazena o próximo item da lista.
+- Um monte de endereços aleatórios estão armazenados.
+- Tenho que percorrer toda a lista até achar o item que procuro.
+
+#### Arrays
+- Você sabe o endereço de cada item.
+- Arrays são ótimos se você deseja ler elementos aleatórios.
+
+#### Terminologia
+- Os elementos de um array são numerados, essa numeração começa no zero e não no um.
+- A posição de um elemento é chamado de índices
+
+#### Inserindo algo no meio da lista
+##### Lista desordenada
+- Para inserir algo em uma lista encadeada, basta mudar o endereço do item anterior.
+- Para arrays, você deve mover todos os itens que estão abaixo do endereço
+de inserção.
+
+### Deleções
+- É mais fácil em listas encadeadas, pois é necessário apenas mudar o endereço ao qual o elemento anterior está apontando.
+**O que é mais usado?**
+Depende...
+Porém arrays são mais comuns...
+
+### Ordenação por seleção
+
