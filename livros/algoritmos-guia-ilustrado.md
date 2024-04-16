@@ -139,3 +139,10 @@ endereço do próximo elemento.
 - Listas encadeadas permitem rápidas inserções e eliminações.
 - Todos os elementos de um array devem ser do mesmo tipo (todos ints,
 todos doubles, e assim por diante).
+
+## Recursão
+- É uma técnica usada em muitos algoritmos.
+- Estratégia dividir para conquistar
+- Função chama a sí própria
+
+### Caso base e caso recursivo
