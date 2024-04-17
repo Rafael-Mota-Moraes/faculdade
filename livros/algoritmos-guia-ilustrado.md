@@ -148,4 +148,12 @@ todos doubles, e assim por diante).
 ### Caso base e caso recursivo
 - Como a função recursiva chama a sí própria, é fácil causar um loop infinito.
 
+### A pilha
+- Call stack
+- push **adicione um item ao topo**
+- pop **remova um item do topo e leia ele**
+
+### A pilha de chamada
+- 
+A pilha de chamadas, ou call stack em inglês, é uma estrutura de dados fundamental em programação. Funciona como uma pilha de pratos em um buffet: o último prato colocado é o primeiro a ser retirado. Da mesma forma, na call stack, as funções chamadas são empilhadas uma sobre a outra conforme são invocadas, e a última função adicionada é a primeira a ser executada. Isso ocorre porque as funções precisam esperar que suas funções internas sejam concluídas antes de retornarem seus resultados. Quando uma função termina, ela é removida da pilha, permitindo que a execução retorne para a função anterior. Isso continua até que todas as funções na pilha tenham sido executadas e a pilha esteja vazia. A call stack é essencial para o controle de fluxo em programas e é fundamental para entender como as linguagens de programação funcionam internamente.
 
