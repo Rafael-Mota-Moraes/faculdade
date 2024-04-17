@@ -146,3 +146,6 @@ todos doubles, e assim por diante).
 - Função chama a sí própria
 
 ### Caso base e caso recursivo
+- Como a função recursiva chama a sí própria, é fácil causar um loop infinito.
+
+
