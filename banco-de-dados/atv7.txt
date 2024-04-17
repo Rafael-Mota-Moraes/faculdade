@@ -1,0 +1,114 @@
+CREATE TABLE cliente (
+codigo_cli INTEGER PRIMARY KEY,
+nome_cli VARCHAR(60));
+
+INSERT INTO cliente VALUES (1,'Joao Paulo Pedro da Silva');
+INSERT INTO cliente VALUES (2,'Juca Batista Pedro da Silveira');
+INSERT INTO cliente VALUES (3,'Maria Pedro Rosa Silveira');
+INSERT INTO cliente VALUES (4,'Paulo Pedro Joao Rosa');
+INSERT INTO cliente VALUES (5,'Saula Quevedo Trindade');
+
+
+CREATE TABLE conta (
+codigo_con INTEGER PRIMARY KEY,
+limite_con NUMERIC (8,2),
+codigo_cli INTEGER REFERENCES cliente,
+saldo numeric(8, 2)
+);
+
+INSERT INTO conta VALUES (1,500,1);
+INSERT INTO conta VALUES (2,0,1);
+INSERT INTO conta VALUES (3,1000,2);
+INSERT INTO conta VALUES (4,500,3);
+INSERT INTO conta VALUES (5,600,4);
+INSERT INTO conta VALUES (6, 300,5);
+
+CREATE TABLE movimento ( -- mudou pra movimentacao
+  codigo_mov SERIAL PRIMARY KEY,
+  descricao_mov VARCHAR(30),
+  data_mov DATE,
+  valor_mov NUMERIC (8,2),
+  debcre_mov CHAR CHECK (debcre_mov in ('d','c')), 
+  codigo_con INTEGER REFERENCES conta
+);
+
+
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240120', 100, 'd', 1);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240120', 100, 'd', 1);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240123', 100, 'd', 1);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240123', 100, 'd', 1);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240124' ,100, 'd', 1);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240125' ,100, 'd', 1);
+
+INSERT INTO movimento VALUES (DEFAULT, 'Deposito ', '20240110', 200, 'c',2);
+INSERT INTO movimento VALUES (DEFAULT, 'Pagamento Titulo', '20240114', 50, 'd',2);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240120', 40, 'd',2);
+INSERT INTO movimento VALUES (DEFAULT, 'Deposito ', '20240121', 600, 'c',2);
+
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240115', 500, 'd',3);
+INSERT INTO movimento VALUES (DEFAULT, 'Deposito', '20240117', 1000, 'c',3);
+
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240109', 1000, 'd',4);
+INSERT INTO movimento VALUES (DEFAULT, 'Tarifa', '20240113', 10, 'd',4);
+INSERT INTO movimento VALUES (DEFAULT, 'Pagamento Titulo ', '20240115', 6000, 'd',4);
+INSERT INTO movimento VALUES (DEFAULT, 'Recebimento Salario ', '20240121', 1200, 'c',4);
+
+INSERT INTO movimento VALUES (DEFAULT, 'Recebimento Salario', '20240115', 1000, 'c',5);
+
+
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240108', 110, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240118', 100, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Transf. De Valor', '20240118', 300, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Pagamento Titulo', '20240118', 400, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240120', 900, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Saque', '20240122', 800, 'd',6);
+INSERT INTO movimento VALUES (DEFAULT, 'Salario', '20240124', 500, 'c',6);
+
+1:
+ALTER TABLE movimento RENAME TO movimentacao;
+
+
+2:
+select *
+from cliente
+where nome_cli like '%Pedro%' and nome_cli like '%Silveira%';
+
+3:
+select c.nome_cli, limite_con
+from cliente c, conta co
+order by co.limite_con desc
+limit 1;
+
+4:
+select c.nome_cli, m.* 
+from cliente c
+inner join conta co using (codigo_cli)
+inner join movimentacao m using (codigo_con)
+where data_mov between '2024-01-15' and '2024-01-20';
+
+5:
+SELECT c.nome_cli, co.codigo_con,
+    SUM(CASE WHEN m.debcre_mov = 'c' THEN m.valor_mov ELSE 0 END) AS total_credito,
+    SUM(CASE WHEN m.debcre_mov = 'd' THEN m.valor_mov ELSE 0 END) AS total_debito
+FROM cliente c
+JOIN conta co ON c.codigo_cli = co.codigo_cli
+JOIN movimentacao m ON co.codigo_con = m.codigo_con
+GROUP BY c.nome_cli, co.codigo_con;
+
+6:
+alter table conta add saldo numeric(8,2);
+
+7:
+-- Inicializar saldos das contas como zero
+UPDATE conta
+SET saldo = 0;
+
+-- Atualizar saldos com base nas movimentações
+UPDATE conta AS c
+SET saldo = c.saldo +
+  (SELECT COALESCE(SUM(CASE 
+                        WHEN m.debcre_mov = 'd' THEN -m.valor_mov 
+                        WHEN m.debcre_mov = 'c' THEN m.valor_mov 
+                      END), 0)
+   FROM movimentacao AS m
+   WHERE m.codigo_con = c.codigo_con);
