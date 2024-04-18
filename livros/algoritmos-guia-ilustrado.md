@@ -164,4 +164,12 @@ A pilha de chamadas, ou call stack em inglês, é uma estrutura de dados fundame
 - Todas as chamadas de funções vão para a call-stack.
 - A call-stack pode ficar muito grande e ocupar muita memória.
 
+## Quicksort
+- Esse algoritmo usa a técnica dividir para conquistar.
 
+### Técnica dividir para conquistar
+- Dividir para conquistar (DC)
+- Os algoritmos que usam essa técnica são recursivos.
+- Para resolver um problema utilizando essa técnica, você tem que seguir 2 passos:
+  - Descubra o caso-base, que deve ser o caso mais simples possível.
+  - Divida ou diminua o seu problema até que ele se torne o caso base.
