@@ -173,3 +173,27 @@ A pilha de chamadas, ou call stack em inglês, é uma estrutura de dados fundame
 - Para resolver um problema utilizando essa técnica, você tem que seguir 2 passos:
   - Descubra o caso-base, que deve ser o caso mais simples possível.
   - Divida ou diminua o seu problema até que ele se torne o caso base.
+
+- Arrays vazios, ou com apenas um elemento serão o caso base, você pode retornar esses arrays como eles estão, visto que não há nada para ordenar.
+- Array com dois elementos também é muito simples de ordenar, basta ver qual o maior elemento entre os dois e trocar ele de lugar com o menor.
+- No quicksort, usamos a estratégia dividir para conquistar, ou seja quebramos um array maior em várias partes.
+- Primeiro escolha um elemento, ele nós chamaremos de **pivô**
+- Encontre os elementos que são maiores que o pivô e aqueles que são menores.
+- Isso é chamado de particionamento, desse modo você tem:
+  - Um subarray contendo todos os números menores que o pivô.
+  - O próprio pivô.
+  - Um subarray contendo todos os números maiores que o pivô.
+- Os subarrays não estão ordenados, apenas particionados.
+- Se eles estivessem ordenados a ordenação seria:
+  - **array esquerdo + pivô + array direito**
+
+- Passos para ordenar um array de três elementos:
+  1 - Escolha o pivô.
+  2 - Particione o array em dois subarrays, separando-os entre elementos menores do que o pivô e elementos maiores do que o pivô.
+  3 - Execute o quicksort recursivamente em ambos os subarrays.
+
+- **Array de quatro elementos**
+- Selecione um pivô.
+- Os subarrays serão de no máximo 3 elementos.
+- Ordene-os recursivamente e os junte ao final.
+- E assim faça o mesmo com arrays maiores.
