@@ -197,3 +197,21 @@ A pilha de chamadas, ou call stack em inglês, é uma estrutura de dados fundame
 - Os subarrays serão de no máximo 3 elementos.
 - Ordene-os recursivamente e os junte ao final.
 - E assim faça o mesmo com arrays maiores.
+
+### Notação bigO revisada.
+- O algoritmo quicksort é unico, pois sua velocidade depende do pivô escolhido.
+#### Revisão de tempos comuns
+- Pesquisa binária: O(log n)
+- Pesquisa simples: O(n)
+- Quicksort: O(n log n)
+- Ordenação por seleção: O(n²)
+- O caixeiro viajante: O(n!)  
+
+**Estimativas baseadas em um computador lento que realiza dez operações por segundo.**
+#### Merge sort **VS** Quicksort
+- Se o quicksort tem tempo de execução médio O(n log n), e o merge sort
+tem tempo de execução O(n log n) sempre, por que não utilizar o merge
+sort? Não seria mais rápido?
+- Quicksort é mais rápido na prática, pois ele funciona mais vezes no caso médio.
+- O(n) * O(log n) = O(n log n) **melhor caso**
+- O(n) **pior caso**
