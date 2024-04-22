@@ -215,3 +215,21 @@ sort? Não seria mais rápido?
 - Quicksort é mais rápido na prática, pois ele funciona mais vezes no caso médio.
 - O(n) * O(log n) = O(n log n) **melhor caso**
 - O(n) **pior caso**
+
+## Tabelas hash
+- Tempo O(1)
+
+### Funções hash
+- Função hash é uma função que você insere uma string e depois disso, a função retorna um número.
+**Requisitos para uma função hash**
+- Ela deve ser consistente.
+- A função deve mapear diferentes palavras para diferentes números.
+
+- A função hash informará o índice do array em que o item está posicionado.
+- Uma tabela hash contém chaves e valores.
+
+### Utilização de tabelas hash
+- Usadas em pesquisas de grande escala.
+- Para traduzir endereço de um site para um endereço ip.
+- Para organizar uma lista de votação.
+- Utlizar como cache de um site.
