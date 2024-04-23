@@ -233,3 +233,22 @@ sort? Não seria mais rápido?
 - Para traduzir endereço de um site para um endereço ip.
 - Para organizar uma lista de votação.
 - Utlizar como cache de um site.
+
+## Pesquisa em largura
+- Utiliza grafos.
+- Utilizados para encontrar caminhos.
+- Possuem vértices e arestas.
+- Diferente dos demais algoritmos vistos a pesquisa em largura usa grafos.
+- Utilizado para reponder duas perguntas:
+  - Existe um caminho?
+  - Qual o caminho mínimo?
+- É preferivel encontrar alguém de primeiro grau, do que alguém de segundo grau.
+- Só checa os itens de segundo grau depois de garantir que ninguém de primeiro grau corresponde a pesquisa.
+
+### Fila
+- A fila em estrutura de dados funciona exatamente como uma fila na vida real.
+- Primeiro a entrar é o primeiro a sair.
+- (FIFO) First In, First Out
+- Duas operações são possíveis: enqueue (enfileirar), dequeue (desenfileirar)
+
+- tempo de execução O(número de pessoas + número de aresta)
