@@ -252,3 +252,21 @@ sort? Não seria mais rápido?
 - Duas operações são possíveis: enqueue (enfileirar), dequeue (desenfileirar)
 
 - tempo de execução O(número de pessoas + número de aresta)
+
+## Algoritmo de Dijkstra
+- Usa grafos.
+- Encontra o caminho mais curto entre os pontos.
+
+### Usando o algoritmo de Dijkstra
+- Diferente da pesquisa em largura o algoritmo de Dijkstra atribui pesos a cada segmento, lá, "caminho minimo é o caminho com menos segmentos", e aqui atribuímos um peso a cada segmento e a partir disos calculamos o caminho.
+
+**Para relembrar, o algoritmo de Dijkstra tem quatro passos:**
+1. Encontre o vértice mais “barato”. Esse é o vértice em que você consegue
+chegar no menor tempo possível.
+2. Veri que se há um caminho mais barato para os vizinhos desse vértice.
+Caso exista, atualize os custos deles.
+3. Repita até que você tenha feito isso para cada vértice do grafo.
+4. Calcule o caminho nal (abordado na próxima seção!).
+
+- Um grafo com pesos é chamado de grafo ponderado.
+- Podem existir arestas com pesos negatívos, mas você não pode usa-las com o algoritmo de Dijkstra.
