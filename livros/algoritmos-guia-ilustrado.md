@@ -270,3 +270,26 @@ Caso exista, atualize os custos deles.
 
 - Um grafo com pesos é chamado de grafo ponderado.
 - Podem existir arestas com pesos negatívos, mas você não pode usa-las com o algoritmo de Dijkstra.
+
+## Algoritmos gulosos
+- Problemas que não tem uma solução rápida.
+- Simples de escrever, normalmente chegam perto de uma boa solução
+
+### Algoritmos de aproximação
+- Um tipo de algoritmo guloso.
+- Chega perto da solução.
+- Quando é necessário muito tempo para uma solução exata, um algoritmo de aproximação é uma boa pedida.
+
+**Os algoritmos gulosos são uma boa escolha porque eles são de fácil compreensão e sua simplicidade também indica que geralmente eles são de rápida execução.**
+
+### Conjuntos
+- Iguais aos conjuntos da matemática.
+- https://www.todamateria.com.br/teoria-dos-conjuntos/
+
+- Relembrando:
+  - Conjuntos são como listas, exceto pelo fato de não poderem ter elementos repetidos.
+  - Você pode fazer algumas operações interessantes com conjuntos como união, intersecção e diferença.
+
+### Problemas NP-completos
+- Para resolver o problema de cobertura de conjuntos você deve calcular cada
+conjunto possível.
