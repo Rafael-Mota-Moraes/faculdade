@@ -293,3 +293,21 @@ Caso exista, atualize os custos deles.
 ### Problemas NP-completos
 - Para resolver o problema de cobertura de conjuntos você deve calcular cada
 conjunto possível.
+
+## Programação dinâmica
+- Se baseia na divisão de um problema em subproblemas.
+**Resumo**
+- A programação dinâmica é uma técnica de otimização utilizada para resolver problemas computacionais complexos, que podem ser divididos em subproblemas sobrepostos e menores. Ela envolve dividir o problema em subproblemas, resolver cada subproblema apenas uma vez e armazenar suas soluções para evitar recálculos desnecessários. Isso geralmente é feito usando tabelas de memoização. A programação dinâmica é especialmente útil em problemas de otimização, como encontrar a maior sequência comum entre duas strings, calcular o menor caminho em um grafo ponderado ou determinar a maneira mais eficiente de cortar uma vara em pedaços de diferentes comprimentos para maximizar o lucro. É uma abordagem poderosa para lidar com problemas de grande escala, tornando-os mais gerenciáveis e eficientes em termos de tempo de execução.
+
+- A programação dinâmica é útil quando você está tentando otimizar em relação a um limite.
+
+- A programação dinâmica é útil quando você está tentando otimizar algo
+em relação a um limite.
+- Você pode utilizar a programação dinâmica quando o problema puder ser
+dividido em subproblemas discretos.
+- Todas as soluções em programação dinâmica envolvem uma tabela.
+- Os valores nas células são, geralmente, o que você está tentando otimizar.
+- Cada célula é um subproblema, então pense sobre como é possível dividir
+este subproblema em outros subproblemas.
+- Não existe uma fórmula única para calcular uma solução em
+programação dinâmica.
