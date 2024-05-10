@@ -1,20 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /*
-Faça um programa que converta uma letra maiúscula em
-letra minúscula. Use a tabela ASCII para isso.
+Sejam a e b os catetos de um triângulo cuja hipotenusa h é
+obtida pela equação:
+
+Faça um programa que leia os valores de a e b, e
+calcule o valor da hipotenusa através da
+fórmula dada. Imprima o resultado.
 */
 
 int main()
 {
-    char maiuscula, minuscula;
-    printf("Digite o char: ");
-    scanf("%c", &maiuscula);
+    float a, b;
+    printf("Digite a e b: ");
+    scanf("%f %f", &a, &b);
 
-    minuscula = maiuscula + 32;
+    float hipotenusa = sqrt((a * a) + (b * b));
 
-    printf("%c\n", minuscula);
+    printf("Hipotenusa: %f", hipotenusa);
 
     return 0;
 }
