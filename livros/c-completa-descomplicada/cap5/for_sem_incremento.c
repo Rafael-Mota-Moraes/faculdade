@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 
     for (c = a; c <= b;)
     {
-        printf("%d ", a);
+        printf("%d ", c);
         c++;
     }
 
