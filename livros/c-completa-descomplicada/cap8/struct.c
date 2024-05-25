@@ -21,5 +21,7 @@ int main()
     strcpy(c.rua, "Av. Brasil");
     c.numero = 1082;
 
+    printf("%s mora na rua %s, número %d, e tem %d anos.\n", c.nome, c.rua, c.numero, c.idade);
+
     return 0;
 }
