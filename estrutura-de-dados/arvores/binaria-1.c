@@ -16,6 +16,7 @@ void em_ordem(struct arvore *arv);
 struct arvore *busca(struct arvore *no, int chave);
 struct arvore *minimo(struct arvore *x);
 struct arvore *maximo(struct arvore *x);
+struct arvore *sucessor(struct arvore *x);
 
 int main()
 {
@@ -47,6 +48,9 @@ int main()
     struct arvore *max = maximo(arv);
     printf("Minimo: %d\nMáximo: %d\n", min->chave, max->chave);
 
+    printf("\n\nSUCESSOR\n\n");
+    struct arvore *sucec = sucessor(arv);
+    printf("Sucessor de %d é %d\n", arv->chave, sucec->chave);
     return 0;
 }
 
@@ -68,6 +72,22 @@ struct arvore *maximo(struct arvore *x)
     }
 
     return x;
+}
+
+struct arvore *sucessor(struct arvore *x)
+{
+    if (x->dir != NULL)
+        return minimo(x->dir);
+
+    struct arvore *y = x->pai;
+
+    while (y != NULL && x == y->dir)
+    {
+        x = y;
+        y = y->pai;
+    }
+
+    return y;
 }
 
 struct arvore *busca(struct arvore *no, int chave)
