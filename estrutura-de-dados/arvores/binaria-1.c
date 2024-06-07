@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Structs
 struct arvore
 {
     int chave;          // 4 bytes
@@ -9,9 +10,12 @@ struct arvore
     struct arvore *dir; // 8 bytes
 };
 
+// Funções
 void inserir(struct arvore **arv, int chave);
 void em_ordem(struct arvore *arv);
 struct arvore *busca(struct arvore *no, int chave);
+struct arvore *minimo(struct arvore *x);
+struct arvore *maximo(struct arvore *x);
 
 int main()
 {
@@ -38,7 +42,32 @@ int main()
         printf("100 não foi encontrado\n");
     printf("\nOk, inseridos!\n");
 
+    printf("\n\nMINIMO E MÁXIMO\n\n");
+    struct arvore *min = minimo(arv);
+    struct arvore *max = maximo(arv);
+    printf("Minimo: %d\nMáximo: %d\n", min->chave, max->chave);
+
     return 0;
+}
+
+struct arvore *minimo(struct arvore *x)
+{
+    while (x->esq != NULL)
+    {
+        x = x->esq;
+    }
+
+    return x;
+}
+
+struct arvore *maximo(struct arvore *x)
+{
+    while (x->dir != NULL)
+    {
+        x = x->dir;
+    }
+
+    return x;
 }
 
 struct arvore *busca(struct arvore *no, int chave)
