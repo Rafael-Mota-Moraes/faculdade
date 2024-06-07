@@ -11,6 +11,7 @@ struct arvore
 
 void inserir(struct arvore **arv, int chave);
 void em_ordem(struct arvore *arv);
+struct arvore *busca(struct arvore *no, int chave);
 
 int main()
 {
@@ -22,9 +23,39 @@ int main()
 
     em_ordem(arv);
 
+    for (int i = 0; i < 11; i++)
+    {
+        struct arvore *temp = busca(arv, v[i]);
+
+        if (temp != NULL)
+            printf("%d foi encontrado\n", temp->chave);
+    }
+    struct arvore *temp = busca(arv, 100);
+
+    if (temp != NULL)
+        printf("%d foi encontrado\n", temp->chave);
+    else
+        printf("100 não foi encontrado\n");
     printf("\nOk, inseridos!\n");
 
     return 0;
+}
+
+struct arvore *busca(struct arvore *no, int chave)
+{
+    while (no != NULL && no->chave != chave)
+    {
+        if (chave < no->chave)
+        {
+            no = no->esq;
+        }
+        else
+        {
+            no = no->dir;
+        }
+    }
+
+    return no;
 }
 
 void em_ordem(struct arvore *arv)
