@@ -15,15 +15,14 @@ void em_ordem(struct arvore *arv);
 int main()
 {
     struct arvore *arv = NULL;
+    int v[] = {15, 6, 3, 2, 4, 7, 13, 9, 18, 17, 20}, i;
 
-    inserir(&arv, 10);
-    inserir(&arv, 7);
-    inserir(&arv, 15);
-    inserir(&arv, 11);
+    for (i = 0; i < 11; i++)
+        inserir(&arv, v[i]);
 
     em_ordem(arv);
 
-    printf("Ok, inseridos!\n");
+    printf("\nOk, inseridos!\n");
 
     return 0;
 }
