@@ -10,6 +10,87 @@ struct arvore
     struct arvore *dir; // 8 bytes
 };
 
+/*
+MOSTRANDO ÁRVORE FORMATADA ###CÓDIGO DO CHATGPT###
+*/
+
+int height(struct arvore *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    int leftHeight = height(root->esq);
+    int rightHeight = height(root->dir);
+    return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+}
+
+// Função para encontrar o número máximo de nós em um nível específico
+int maxNodesAtLevel(int level)
+{
+    return 1 << level; // 2^level
+}
+
+// Função auxiliar para imprimir espaços
+void printSpaces(int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        printf(" ");
+    }
+}
+
+// Função para imprimir a árvore de forma bonita
+void printTree(struct arvore *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    int h = height(root);
+    int maxWidth = maxNodesAtLevel(h - 1) * 3; // Largura máxima da última linha
+
+    // Array de filas para travessia em nível
+    struct arvore **queue = (struct arvore **)malloc(sizeof(struct arvore *) * maxWidth);
+    int front = 0, rear = 0;
+
+    queue[rear++] = root;
+
+    for (int level = 0; level < h; level++)
+    {
+        int levelNodes = maxNodesAtLevel(level);
+        int spacesBetween = (maxWidth / levelNodes) - 1;
+        int leadingSpaces = spacesBetween / 2;
+
+        printSpaces(leadingSpaces);
+
+        for (int i = 0; i < levelNodes; i++)
+        {
+            if (front < rear && queue[front] != NULL)
+            {
+                printf("%2d", queue[front]->chave);
+                queue[rear++] = queue[front]->esq;
+                queue[rear++] = queue[front]->dir;
+            }
+            else
+            {
+                printf("  ");
+                queue[rear++] = NULL;
+                queue[rear++] = NULL;
+            }
+            if (i < levelNodes - 1)
+            {
+                printSpaces(spacesBetween);
+            }
+            front++;
+        }
+        printf("\n");
+    }
+
+    free(queue);
+}
+
 // Funções
 void inserir(struct arvore **arv, int chave);
 void em_ordem(struct arvore *arv);
@@ -51,6 +132,9 @@ int main()
     printf("\n\nSUCESSOR\n\n");
     struct arvore *sucec = sucessor(arv);
     printf("Sucessor de %d é %d\n", arv->chave, sucec->chave);
+    printf("\n\n\n\n\n");
+    printTree(arv);
+
     return 0;
 }
 
