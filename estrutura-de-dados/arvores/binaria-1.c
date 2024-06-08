@@ -14,18 +14,17 @@ struct arvore
 MOSTRANDO ÁRVORE FORMATADA ###CÓDIGO DO CHATGPT###
 */
 
-int height(struct arvore *root)
+int altura(struct arvore *raiz)
 {
-    if (root == NULL)
+    if (raiz == NULL)
     {
         return 0;
     }
-    int leftHeight = height(root->esq);
-    int rightHeight = height(root->dir);
+    int leftHeight = altura(raiz->esq);
+    int rightHeight = altura(raiz->dir);
     return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
 }
 
-// Função para encontrar o número máximo de nós em um nível específico
 int maxNodesAtLevel(int level)
 {
     return 1 << level; // 2^level
@@ -48,7 +47,7 @@ void printTree(struct arvore *root)
         return;
     }
 
-    int h = height(root);
+    int h = altura(root);
     int maxWidth = maxNodesAtLevel(h - 1) * 3; // Largura máxima da última linha
 
     // Array de filas para travessia em nível
