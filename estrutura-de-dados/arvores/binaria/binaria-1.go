@@ -29,7 +29,7 @@ func main() {
 	}
 
 	fmt.Println("Árvore Binária de Busca:")
-	printTree(arvore)
+	mostrarArvore(arvore)
 }
 
 func walk(arvore *No) {
@@ -84,52 +84,52 @@ func altura(raiz *No) int {
 	return int(math.Max(float64(leftHeight), float64(rightHeight))) + 1
 }
 
-func maxNodesAtLevel(level int) int {
-	return 1 << uint(level) // 2^level
+func maximoDeNosNoNivel(nivel int) int {
+	return 1 << uint(nivel) // 2^nivel
 }
 
-func printSpaces(count int) {
+func mostrarEspacos(count int) {
 	for i := 0; i < count; i++ {
 		fmt.Print(" ")
 	}
 }
 
-func printTree(root *No) {
-	if root == nil {
+func mostrarArvore(raiz *No) {
+	if raiz == nil {
 		return
 	}
 
-	h := altura(root)
-	maxWidth := maxNodesAtLevel(h-1) * 3 // Largura máxima da última linha
+	h := altura(raiz)
+	larguraMaxima := maximoDeNosNoNivel(h-1) * 3 // Largura máxima da última linha
 
 	// Fila para travessia em nível
-	queue := []*No{root}
-	front := 0
-	rear := 1
+	fila := []*No{raiz}
+	proximo := 0
+	anterior := 1
 
-	for level := 0; level < h; level++ {
-		levelNodes := maxNodesAtLevel(level)
-		spacesBetween := (maxWidth / levelNodes) - 1
-		leadingSpaces := spacesBetween / 2
+	for nivel := 0; nivel < h; nivel++ {
+		nosNoNivel := maximoDeNosNoNivel(nivel)
+		espacosEntre := (larguraMaxima / nosNoNivel) - 1
+		espacosPrincipais := espacosEntre / 2
 
-		printSpaces(leadingSpaces)
+		mostrarEspacos(espacosPrincipais)
 
-		nextRear := rear + levelNodes*2
-		for i := front; i < rear; i++ {
-			node := queue[i]
-			if node != nil {
-				fmt.Printf("%2d", node.chave)
-				queue = append(queue, node.esq, node.dir)
+		proximoAnterior := anterior + nosNoNivel*2
+		for i := proximo; i < anterior; i++ {
+			no := fila[i]
+			if no != nil {
+				fmt.Printf("%2d", no.chave)
+				fila = append(fila, no.esq, no.dir)
 			} else {
 				fmt.Print("  ")
-				queue = append(queue, nil, nil)
+				fila = append(fila, nil, nil)
 			}
-			if i < nextRear-1 {
-				printSpaces(spacesBetween)
+			if i < proximoAnterior-1 {
+				mostrarEspacos(espacosEntre)
 			}
 		}
 		fmt.Println()
-		front = rear
-		rear = nextRear
+		proximo = anterior
+		anterior = proximoAnterior
 	}
 }
