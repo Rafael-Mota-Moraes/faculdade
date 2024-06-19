@@ -10,10 +10,6 @@ struct arvore
     struct arvore *dir; // 8 bytes
 };
 
-/*
-MOSTRANDO ÁRVORE FORMATADA ###CÓDIGO DO CHATGPT###
-*/
-
 int altura(struct arvore *raiz)
 {
     if (raiz == NULL)

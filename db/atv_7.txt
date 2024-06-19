@@ -1,0 +1,13 @@
+# ➜ pgcli -h localhost  db-estudos postgres
+
+
+-- 1) Altera nome da tabela movimento para movimentacao;
+ALTER TABLE movimento RENAME TO movimentacao;
+
+-- 2) Liste todos os clientes que contenham Pedro e Silveira no nome.
+SELECT * FROM cliente WHERE nome_cli ILIKE '%Pedro%' AND nome_cli ILIKE '%Silveira%';
+
+-- 3)  Liste o nome do cliente que possui o maior limite.
+SELECT nome_cli, limite_con FROM cliente, conta WHERE cliente.codigo_cli = conta.codigo_cli AND conta.limite_con = (SELECT MAX(limite_con) FROM conta);
+
+-- 4) Mostre o nome do cliente e todos os dados da tabela movimentação efetuadas entre os dias '20210715' e '20210720'
