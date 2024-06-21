@@ -25,3 +25,14 @@ SUM(CASE WHEN movimentacao.debcre_mov = 'd' THEN valor_mov ELSE 0 END) AS total_
 FROM cliente, conta, movimentacao
 WHERE conta.codigo_cli = cliente.codigo_cli AND movimentacao.codigo_con = conta.codigo_con
 GROUP BY cliente.nome_cli, conta.codigo_con;
+
+-- 6) Crie uma coluna chamada saldo tipo NUMERIC(8,2) na tabela conta.
+ALTER TABLE conta ADD saldo NUMERIC(8, 2);
+
+-- 7) Atualize a coluna criada acima de acordo com a movimentação de cada conta.
+UPDATE conta
+	SET saldo = (
+		SELECT SUM(valor_mov * CASE WHEN debcre_mov = 'c' THEN 1 ELSE -1 END)
+		FROM movimentacao
+		WHERE movimentacao.codigo_con = conta.codigo_con
+	);
