@@ -17,4 +17,11 @@ WHERE movimentacao.codigo_con = conta.codigo_con
 AND conta.codigo_cli = cliente.codigo_cli
 AND movimentacao.data_mov BETWEEN '2024-01-15' AND '2024-01-20';
 
--- 5)
+-- 5) Mostre o nome do cliente, o código da conta e o total de débito e crédito de cada conta.
+
+SELECT cliente.nome_cli, conta.codigo_con,
+SUM(CASE WHEN movimentacao.debcre_mov = 'c' THEN valor_mov ELSE 0 END) AS total_credito,
+SUM(CASE WHEN movimentacao.debcre_mov = 'd' THEN valor_mov ELSE 0 END) AS total_debito
+FROM cliente, conta, movimentacao
+WHERE conta.codigo_cli = cliente.codigo_cli AND movimentacao.codigo_con = conta.codigo_con
+GROUP BY cliente.nome_cli, conta.codigo_con;
