@@ -11,3 +11,10 @@ SELECT * FROM cliente WHERE nome_cli ILIKE '%Pedro%' AND nome_cli ILIKE '%Silvei
 SELECT nome_cli, limite_con FROM cliente, conta WHERE cliente.codigo_cli = conta.codigo_cli AND conta.limite_con = (SELECT MAX(limite_con) FROM conta);
 
 -- 4) Mostre o nome do cliente e todos os dados da tabela movimentação efetuadas entre os dias '20210715' e '20210720'
+SELECT cliente.nome_cli, movimentacao.*
+FROM cliente, movimentacao, conta
+WHERE movimentacao.codigo_con = conta.codigo_con
+AND conta.codigo_cli = cliente.codigo_cli
+AND movimentacao.data_mov BETWEEN '2024-01-15' AND '2024-01-20';
+
+-- 5)
