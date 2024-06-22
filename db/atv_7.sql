@@ -36,3 +36,23 @@ UPDATE conta
 		FROM movimentacao
 		WHERE movimentacao.codigo_con = conta.codigo_con
 	);
+
+-- 8) Mostre o nome do cliente, número da conta, limite e o saldo.
+SELECT cliente.nome_cli, conta.codigo_con, conta.limite_con, conta.saldo
+FROM cliente, conta, movimentacao
+WHERE movimentacao.codigo_con = conta.codigo_con AND conta.codigo_cli = cliente.codigo_cli
+GROUP BY cliente.nome_cli, conta.codigo_con;
+
+-- 9) Mostre o nome do cliente, número da conta e todos os dados da movimentação de cada conta.
+SELECT cliente.nome_cli, conta.codigo_con, movimentacao.*
+FROM cliente, conta, movimentacao
+WHERE movimentacao.codigo_con = conta.codigo_con AND conta.codigo_cli = cliente.codigo_cli;4
+
+-- 10) Mostre o nome do cliente e a quantidade de lançamentos a débito e crédito efetuados em sua conta.
+SELECT
+	cliente.nome_cli,
+	COUNT(CASE WHEN movimentacao.debcre_mov = 'd' THEN 1 ELSE NULL END) AS debitos,
+	COUNT(CASE WHEN movimentacao.debcre_mov = 'c' THEN 1 ELSE NULL END) AS creditos
+FROM conta, movimentacao, cliente
+WHERE conta.codigo_con = movimentacao.codigo_con AND conta.codigo_cli = cliente.codigo_Cli
+GROUP BY cliente.nome_cli;
